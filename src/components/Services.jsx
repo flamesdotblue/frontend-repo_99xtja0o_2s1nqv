@@ -1,4 +1,5 @@
 import { Code, Shield, Users, GraduationCap } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Services() {
   const enterprise = [
@@ -37,55 +38,90 @@ export default function Services() {
     },
   ];
 
+  const container = {
+    hidden: { opacity: 0, y: 12 },
+    show: { opacity: 1, y: 0, transition: { staggerChildren: 0.07, duration: 0.5 } },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 12 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
+  };
+
   return (
     <section id="solutions" className="py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Enterprise Solutions</h2>
-            <p className="mt-2 text-neutral-600 dark:text-neutral-400">
+            <motion.h2 initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-2xl sm:text-3xl font-bold tracking-tight">Enterprise Solutions</motion.h2>
+            <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.05 }} className="mt-2 text-neutral-600 dark:text-neutral-400">
               From idea to impact, we architect secure, scalable platforms tailored to your domain.
-            </p>
-            <div className="mt-8 grid sm:grid-cols-2 gap-4">
-              {enterprise.map((item) => (
-                <div key={item.title} className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 hover:border-indigo-300 dark:hover:border-indigo-700 transition-colors">
+            </motion.p>
+            <motion.div
+              className="mt-8 grid sm:grid-cols-2 gap-4"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={container}
+            >
+              {enterprise.map((itemData) => (
+                <motion.div
+                  key={itemData.title}
+                  variants={item}
+                  whileHover={{ y: -4, boxShadow: '0 8px 24px rgba(0,0,0,0.08)' }}
+                  className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 bg-white/70 dark:bg-neutral-900/60 backdrop-blur hover:border-indigo-300 dark:hover:border-indigo-700 transition-colors"
+                >
                   <div className="h-10 w-10 rounded-lg bg-indigo-600 text-white flex items-center justify-center">
-                    {item.icon}
+                    {itemData.icon}
                   </div>
-                  <div className="mt-3 font-semibold">{item.title}</div>
-                  <div className="text-sm text-neutral-600 dark:text-neutral-400">{item.desc}</div>
-                </div>
+                  <div className="mt-3 font-semibold">{itemData.title}</div>
+                  <div className="text-sm text-neutral-600 dark:text-neutral-400">{itemData.desc}</div>
+                </motion.div>
               ))}
-            </div>
-            <a
+            </motion.div>
+            <motion.a
               href="#contact"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
               className="mt-6 inline-flex items-center justify-center rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-5 py-3 text-sm font-medium hover:opacity-90"
             >
               Book a discovery call
-            </a>
+            </motion.a>
           </div>
           <div id="academy">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Thamira Academy</h2>
-            <p className="mt-2 text-neutral-600 dark:text-neutral-400">
+            <motion.h2 initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-2xl sm:text-3xl font-bold tracking-tight">Thamira Academy</motion.h2>
+            <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.05 }} className="mt-2 text-neutral-600 dark:text-neutral-400">
               Industry-backed programs designed to transition you into high-growth tech roles.
-            </p>
-            <div className="mt-8 grid sm:grid-cols-2 gap-4">
-              {programs.map((item) => (
-                <div key={item.title} className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 hover:border-purple-300 dark:hover:border-purple-700 transition-colors">
+            </motion.p>
+            <motion.div
+              className="mt-8 grid sm:grid-cols-2 gap-4"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={container}
+            >
+              {programs.map((itemData) => (
+                <motion.div
+                  key={itemData.title}
+                  variants={item}
+                  whileHover={{ y: -4, boxShadow: '0 8px 24px rgba(0,0,0,0.08)' }}
+                  className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 bg-white/70 dark:bg-neutral-900/60 backdrop-blur hover:border-purple-300 dark:hover:border-purple-700 transition-colors"
+                >
                   <div className="h-10 w-10 rounded-lg bg-purple-600 text-white flex items-center justify-center">
-                    {item.icon}
+                    {itemData.icon}
                   </div>
-                  <div className="mt-3 font-semibold">{item.title}</div>
-                  <div className="text-sm text-neutral-600 dark:text-neutral-400">{item.desc}</div>
-                </div>
+                  <div className="mt-3 font-semibold">{itemData.title}</div>
+                  <div className="text-sm text-neutral-600 dark:text-neutral-400">{itemData.desc}</div>
+                </motion.div>
               ))}
-            </div>
-            <a
+            </motion.div>
+            <motion.a
               href="#contact"
-              className="mt-6 inline-flex items-center justify-center rounded-md border border-neutral-200 dark:border-neutral-800 px-5 py-3 text-sm font-medium hover:bg-neutral-50 dark:hover:bg-neutral-900"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="mt-6 inline-flex items-center justify-center rounded-md border border-neutral-200 dark:border-neutral-800 px-5 py-3 text-sm font-medium bg-white/70 dark:bg-neutral-900/60 backdrop-blur hover:bg-neutral-50 dark:hover:bg-neutral-900"
             >
               Get program brochure
-            </a>
+            </motion.a>
           </div>
         </div>
       </div>
