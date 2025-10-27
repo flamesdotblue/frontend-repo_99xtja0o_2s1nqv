@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   return (
-    <footer id="contact" className="border-t border-black/5 dark:border-white/10 bg-white/60 dark:bg-neutral-950/60 backdrop-blur">
+    <footer className="border-t border-black/5 dark:border-white/10 bg-white/60 dark:bg-neutral-950/60 backdrop-blur">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div>
@@ -12,9 +14,10 @@ export default function Footer() {
           <div className="text-sm">
             <div className="font-semibold">Company</div>
             <ul className="mt-2 space-y-1 text-neutral-600 dark:text-neutral-400">
-              <li><a href="#solutions" className="hover:text-neutral-900 dark:hover:text-white">Solutions</a></li>
-              <li><a href="#academy" className="hover:text-neutral-900 dark:hover:text-white">Academy</a></li>
-              <li><a href="#cases" className="hover:text-neutral-900 dark:hover:text-white">Case Studies</a></li>
+              <li><Link to="/" className="hover:text-neutral-900 dark:hover:text-white">Home</Link></li>
+              <li><Link to="/about" className="hover:text-neutral-900 dark:hover:text-white">About</Link></li>
+              <li><Link to="/cases" className="hover:text-neutral-900 dark:hover:text-white">Case Studies</Link></li>
+              <li><Link to="/contact" className="hover:text-neutral-900 dark:hover:text-white">Contact</Link></li>
             </ul>
           </div>
           <div className="text-sm">
